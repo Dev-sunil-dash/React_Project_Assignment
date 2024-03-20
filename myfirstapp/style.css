@@ -26,3 +26,19 @@ footer span {
     text-align: center;
     width: 100%;
 }
+
+ul {
+    text-align: right;
+    background-color: #e5e5e5;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+li {
+    list-style: none;
+    display: inline;
+    margin-right: 15px;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
