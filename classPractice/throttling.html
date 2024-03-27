@@ -1,0 +1,23 @@
+<div style="height: 1500;"></div>
+<script>
+    var timeoutId;
+    var flag = true;
+    function fn() {
+        console.log('5k line of code')
+    }
+
+    function f1() {
+        if (flag) {
+            fn()
+            flag = false
+        }
+        clearTimeout(timeoutId)
+        timeoutId = setTimeout(function () {
+            fn()
+        }, 3000)
+    }
+
+    window.addEventListener("scroll", f1)
+</script>
+
+timeoutId = 1 5

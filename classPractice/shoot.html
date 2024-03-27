@@ -1,0 +1,45 @@
+<style>
+    .ground {
+        width: 500px;
+        height: 300px;
+        border: 1px solid red;
+        position: relative;
+    }
+
+    .arrow {
+        width: 100px;
+        border: 3px solid blue;
+        display: inline-block;
+        position: absolute;
+        top: 148px;
+    }
+
+    .wall {
+        position: absolute;
+        height: 250;
+        border: 2px solid blue;
+        left: 450;
+        top: 25px;
+    }
+</style>
+<div class="ground">
+    <div class="arrow">
+
+    </div>
+    <div class="wall">
+
+    </div>
+</div>
+<button onclick="fnShoot()">Shoot</button>
+<script>
+    function fnShoot() {
+        const arrowRef = document.querySelector(".arrow")
+        var left = 0;
+        const intervalId = setInterval(function () {
+            arrowRef.style.left = left++
+            if (left == 350) {
+                clearInterval(intervalId)
+            }
+        }, 10)
+    }
+</script>

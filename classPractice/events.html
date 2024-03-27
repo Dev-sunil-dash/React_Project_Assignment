@@ -1,0 +1,11 @@
+<button style="background: red;" onclick="fn(event)">Button1</button>
+<button onclick="fn(event)">Button2</button>
+<button onclick="fn(event)">Button3</button>
+<script>
+    function fn(eve) {
+        const btnRef = eve.target;
+        document.querySelector("button[style]").removeAttribute("style")
+        btnRef.style.background = "red"
+    }
+
+</script>

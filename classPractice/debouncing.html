@@ -1,0 +1,17 @@
+<script>
+    var timeoutId;
+    function fn() {
+        console.log('5k line of code')
+    }
+
+    function f1() {
+        clearTimeout(timeoutId)
+        timeoutId = setTimeout(function () {
+            fn()
+        }, 3000)
+    }
+
+    window.addEventListener("resize", f1)
+</script>
+
+timeoutId = 1 5

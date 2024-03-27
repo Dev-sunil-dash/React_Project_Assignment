@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="bootstrap.min.css">
+<script src="login.js"></script>
+
+<h1 class="bg-primary text-center text-white py-3 mb-5">Login Page</h1>
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-3 col-md-5 text-end">
+            <b>User id:</b>
+        </div>
+        <div class="col-5  col-md-3">
+            <input id="uid" class="form-control" onkeyup="handleChange(event)">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-3 col-md-5 text-end">
+            <b>Password:</b>
+        </div>
+        <div class="col-5  col-md-3">
+            <input id="pwd" class="form-control" type="password" onkeyup="handleChange(event)">
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-3 offset-md-5 col-9 col-md-7">
+            <button onclick="handleLogin()" type="button" class="btn btn-primary">Login</button>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- <div>
+    <b>Password:</b><input>
+</div>
+
+<div>
+    <button>Login</button>
+</div> -->
+
+<div class="position-fixed w-100 bottom-0 text-center bg-primary text-white">&copy; rights belogns to me.</div>
