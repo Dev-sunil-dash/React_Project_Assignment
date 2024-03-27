@@ -1,5 +1,6 @@
 <style>
     .ground {
+        left: 300px;
         width: 500px;
         height: 300px;
         border: 1px solid red;
@@ -21,6 +22,10 @@
         left: 450;
         top: 25px;
     }
+
+    .btn {
+        margin-left: 500px;
+    }
 </style>
 <div class="ground">
     <div class="arrow">
@@ -30,16 +35,16 @@
 
     </div>
 </div>
-<button onclick="fnShoot()">Shoot</button>
+<button class="btn" onclick="fnShoot()">Shoot</button>
 <script>
     function fnShoot() {
-        const arrowRef = document.querySelector(".arrow")
+        var arrRef = document.querySelector(".arrow");
         var left = 0;
-        const intervalId = setInterval(function () {
-            arrowRef.style.left = left++
-            if (left == 350) {
-                clearInterval(intervalId)
+        let intervalTimer = setInterval(() => {
+            arrRef.style.left = left++;
+            if (left === 348) {
+                clearInterval(intervalTimer)
             }
-        }, 10)
+        }, 10);
     }
 </script>

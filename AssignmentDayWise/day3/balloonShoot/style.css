@@ -1,0 +1,47 @@
+.ground {
+    width: 500px;
+    height: 300px;
+    border: 1px solid red;
+    position: relative;
+}
+
+.arrow {
+    width: 100px;
+    border: 2px solid blue;
+    display: inline-block;
+    position: absolute;
+}
+
+.balloon1 {
+    width: 40px;
+    height: 40px;
+    border: 1px solid red;
+    position: absolute;
+    border-radius: 50%;
+    top: 20px;
+    left: 300px;
+}
+
+.balloon2 {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 1px solid red;
+    border-radius: 50%;
+    top: 80px;
+    left: 350px;
+}
+
+.balloon3 {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 1px solid red;
+    border-radius: 50%;
+    top: 190px;
+    left: 300px;
+}
+
+.btn {
+    margin-left: 520px;
+}
