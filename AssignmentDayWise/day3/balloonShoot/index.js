@@ -22,6 +22,7 @@ function stopMovingArrowRight() {
 }
 
 function checkArrowCollision() {
+    debugger;
     var arrow = document.querySelector('.arrow');
     var arrowTop = parseInt(arrow.style.top) || 0;
     var arrowLeft = parseInt(arrow.style.left) || 0;
@@ -73,15 +74,6 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!selectedBaloon) {
                 alert("Please set a target");
                 return;
-                // }
-                // var arrow = document.querySelector('.arrow');
-                // var balloonHeight = targetBal.offsetHeight;
-                // var balloonLeft = targetBal.offsetLeft;
-                // var balloonTop = targetBal.offsetTop;
-
-                // if (condition) {
-
-                // }
             }
             startMovingArrowRight();
         }
