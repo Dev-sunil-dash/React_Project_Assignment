@@ -22,7 +22,7 @@ function stopMovingArrowRight() {
 }
 
 function checkArrowCollision() {
-    debugger;
+    //debugger;
     var arrow = document.querySelector('.arrow');
     var arrowTop = parseInt(arrow.style.top) || 0;
     var arrowLeft = parseInt(arrow.style.left) || 0;
