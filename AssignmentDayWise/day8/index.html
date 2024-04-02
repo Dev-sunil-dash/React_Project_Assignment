@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <p>
+        <b>No1: </b><input id='n1' />
+    </p>
+    <p>
+        <b>No2: </b><input id='n2' />
+    </p>
+    <p>
+        <button onclick="fnClick()">ADD</button>
+    </p>
+    <h1 id="result"></h1>
+    <script>
+        function fnClick() {
+            let input1 = document.querySelector("#n1").value;
+            let input2 = document.querySelector("#n2").value;
+            let res = parseInt(input1) + parseInt(input2);
+            document.querySelector("#result").innerHTML = res;
+
+            // document.addEventListener("DOMContentLoaded", function (event) {
+            //     document.getElementById("addButton").addEventListener("click", fnClick);
+            // });
+        }
+    </script>
+
+</body>
+
+</html>
