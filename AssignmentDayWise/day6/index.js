@@ -21,5 +21,5 @@ function findSmallAndLarge(input) {
     // return [min, max];
 }
 const [x, y] = findSmallAndLarge(arr);
-console.log(`x value should be ${x}`);
-console.log(`y value should be ${y}`);
+console.log(x);
+console.log(y);
