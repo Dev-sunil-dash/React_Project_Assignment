@@ -1,7 +1,6 @@
 function getPrimeNumbers(a, b) {
     let primes = [];
     for (let i = ++a; i <= b; i++) {
-        // console.log("i=" + i);
         let isPrime = true;
         if (i <= 1) {
             isPrime = false;
