@@ -1,0 +1,26 @@
+<script src="/react.production.min.js"></script>
+<script src="/react-dom.production.min.js"></script>
+<script src="/babel.min.js"></script>
+<div id="root"></div>
+
+<script type="text/babel">
+
+    function App() {
+        const [count, setCount] = React.useState(0);
+
+        function handleIncrement(e) {
+            setCount(count + 1);
+            console.log(count);
+        }
+        function handleDecrement() {
+            setCount(count - 1);
+            console.log(count);
+        }
+        return <div>
+            <h1>{count}</h1>
+            <button onClick={handleIncrement}>Increment</button>
+            <button onClick={handleDecrement}>Decrement</button>
+        </div>
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>

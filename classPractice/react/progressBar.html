@@ -1,0 +1,46 @@
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>
+    .progressbar {
+        width: 500px;
+        background-color: blanchedalmond;
+        height: 15px;
+    }
+
+    .innerbar {
+        /* width: 250px; */
+        background-color: green;
+        height: 15px;
+    }
+</style>
+
+<div id="root"></div>
+
+<script type="text/babel">
+    function App() {
+        const myRef = React.useRef(null);
+        const [width, setWidth] = React.useState(0);
+        const [percentage, setPercentage] = React.useState(0);
+        // console.log(myRef);
+        function submitClick(e) {
+            e.preventDefault();
+            console.log(myRef.current.value);
+            setPercentage(myRef.current.value);
+            const val = parseFloat(myRef.current.value);
+            val && val >= 0 && val <= 100 ? setWidth((val / 100) * 500) : alert("invalid input");
+        }
+        return <div>
+            <form onSubmit={submitClick}>
+                <label>Enter Value </label><input ref={myRef} type="number" min="0" max= "100"/>
+                <label>Enter Value </label><input type="range" min="0" max= "100"/>
+                <button type="submit">Submit</button>
+            </form>
+            <div className="progressbar">
+                <div className="innerbar" style={{ width: width + "px" }}></div>
+                <span>{width}px and {percentage}%</span>
+            </div>
+        </div>
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>

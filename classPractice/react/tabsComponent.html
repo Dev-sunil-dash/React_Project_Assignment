@@ -1,0 +1,58 @@
+<script src="/react.production.min.js"></script>
+<script src="/react-dom.production.min.js"></script>
+<script src="/babel.min.js"></script>
+<div id="root"></div>
+<style>
+    .tab {
+        margin-right: 5px;
+        border: 1px solid #eee;
+        padding: 5px;
+        cursor: pointer;
+        border-radius: 10px 0 10px 0;
+    }
+
+    .tab:hover {
+        background-color: aqua;
+        color: #fff;
+
+    }
+</style>
+
+<script type="text/babel">
+
+    function App() {
+        const [activeItem, setActiveitem] = React.useState();
+        function handleClick(e) {
+            setActiveitem(e.target.innerText);
+
+        }
+        return <>
+            <h1>React tabs component</h1>
+            <div>
+                <span className="tab" onClick={handleClick}>Students</span>
+                <span className="tab" onClick={handleClick}>Teachers</span>
+            </div>
+            <hr />
+            <p>
+                {activeItem}:
+            </p>
+            {
+                activeItem === "Students" ? <div>
+                    <ul>
+                        <li>Student 1</li>
+                        <li>Student 2</li>
+                    </ul>
+                </div>
+                    :
+                    activeItem === "Teachers" &&
+                    <div>
+                        <ul>
+                            <li>Teacher 1</li>
+                            <li>Teacher 2</li>
+                        </ul>
+                    </div>
+            }
+        </>
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>

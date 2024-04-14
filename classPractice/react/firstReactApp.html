@@ -1,0 +1,21 @@
+<script src="/react.production.min.js"></script>
+<script src="/react-dom.production.min.js"></script>
+<script src="/babel.min.js"></script>
+<div id="root"></div>
+
+<script type="text/babel">
+
+    function NameComponent(props) {
+        return <h1>Name :{props.name}, Location:{props.loc} </h1>
+    }
+
+    function App() {
+        return <div>
+            <NameComponent name="Sachin" loc="Mumbai" />
+            <NameComponent name="Kohli" loc="Delhi" />
+            <NameComponent name="Dhoni" loc="Ranchi" />
+            <NameComponent name="Rohit" loc="Hyderabad" />
+        </div>
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>

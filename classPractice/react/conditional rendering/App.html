@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/react.production.min.js"></script>
+    <script src="/react-dom.production.min.js"></script>
+    <script src="/babel.min.js"></script>
+    <!-- <script src="./App.js"></script> -->
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const people = [{
+            id: 0,
+            name: 'Creola Katherine Johnson',
+            profession: 'mathematician',
+            accomplishment: 'spaceflight calculations',
+            imageId: 'MK3eW3A'
+        }, {
+            id: 1,
+            name: 'Mario José Molina-Pasquel Henríquez',
+            profession: 'chemist',
+            accomplishment: 'discovery of Arctic ozone hole',
+            imageId: 'mynHUSa'
+        }, {
+            id: 2,
+            name: 'Mohammad Abdus Salam',
+            profession: 'physicist',
+            accomplishment: 'electromagnetism theory',
+            imageId: 'bE7W1ji'
+        }, {
+            id: 3,
+            name: 'Percy Lavon Julian',
+            profession: 'chemist',
+            accomplishment: 'pioneering cortisone drugs, steroids and birth control pills',
+            imageId: 'IOjWm71'
+        }, {
+            id: 4,
+            name: 'Subrahmanyan Chandrasekhar',
+            profession: 'astrophysicist',
+            accomplishment: 'white dwarf star mass calculations',
+            imageId: 'lrWQx8l'
+        }];
+
+        function getImageUrl(person) {
+            return (
+                'https://i.imgur.com/' +
+                person.imageId +
+                's.jpg'
+            );
+        }
+
+        function List() {
+            const listItems = people.map(person =>
+                <li key={person.id}>
+                    <img
+                        src={getImageUrl(person)}
+                        alt={person.name}
+                    />
+                    <p>
+                        <b>{person.name}:</b>
+                        {' ' + person.profession + ' '}
+                        known for {person.accomplishment}
+                    </p>
+                </li>
+            );
+            return (
+                <article>
+                    <h1>Scientists</h1>
+                    <ul>{listItems}</ul>
+                </article>
+            );
+        }
+        function App() {
+            return <div>
+                <List />
+            </div>
+        }
+        ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+</body>
+
+</html>
