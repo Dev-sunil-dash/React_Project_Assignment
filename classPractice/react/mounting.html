@@ -1,0 +1,30 @@
+<script src="/react.development.js"></script>
+<script src="/babel.min.js"></script>
+<script src="/react-dom.development.js"></script>
+<!-- container -->
+<div id="root"></div>
+
+
+<script type="text/babel">
+    function App() {
+        debugger;
+        function oneKlines() {
+            console.log('beofre loading : 1k lines')
+        }
+        oneKlines();
+        React.useEffect(function () {
+            console.log('after loading : 1k lines')
+        }, [])
+        return <div>
+            <h1>5k Lines of code </h1>
+            <h3>Hellow Sachin</h3>
+        </div>
+
+    }
+
+    // get refrece of my container
+    const containerRef = document.getElementById("root")
+    const root = ReactDOM.createRoot(containerRef)
+    //render content inside the container
+    root.render(<App />)
+</script>

@@ -1,0 +1,58 @@
+<script src="/react.development.js"></script>
+<script src="/babel.min.js"></script>
+<script src="/react-dom.development.js"></script>
+<!-- container -->
+<div id="root"></div>
+
+
+<script type="text/babel">
+    function A(props) {
+        return <div>
+            <h1>A:</h1>
+            <C name={props.name} />
+        </div>
+    }
+    function B() {
+        return <div>
+            <h1>B</h1>
+        </div>
+    }
+    function C(props) {
+        return <div>
+            <h1>C:</h1>
+            <D>{props.name}</D>
+        </div>
+    }
+    function D(props) {
+        return <div>
+            <h1>D:</h1>
+            <E name={props.children} />
+        </div>
+    }
+    function E(props) {
+        return <div>
+            <h1>E: {props.name}</h1>
+        </div>
+    }
+    function App() {
+        const ref = React.useRef();
+        const [data, setData] = React.useState()
+        const handleClick = () => {
+            const name = ref.current.value;
+            setData(name)
+        }
+        return <div>
+            <h1>App</h1>
+            <p>Name:<input ref={ref} /></p>
+            <button onClick={handleClick}>submit</button>
+            <A name={data} />
+            <B />
+        </div>
+    }
+
+    // get refrece of my container
+    const containerRef = document.getElementById("root")
+    const root = ReactDOM.createRoot(containerRef)
+    //render content inside the container
+    root.render(<App />)
+</script>

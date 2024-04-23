@@ -1,0 +1,79 @@
+<script src="/react.development.js"></script>
+<script src="/babel.min.js"></script>
+<script src="/react-dom.development.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    function Pagination({ pageNo, setPageNo, totalPages }) {
+        const handlePrev = () => {
+            setPageNo(pageNo - 1)
+        }
+        const handleNext = () => {
+            setPageNo(pageNo + 1)
+        }
+        return <div><button disabled={pageNo === 1} onClick={handlePrev}>Prev</button>{pageNo}<button disabled={pageNo === totalPages} onClick={handleNext}>Next</button></div>
+    }
+
+    function Table(props) {
+        const { headings, data, keys, headingColor } = props;
+        const [pageNo, setPageNo] = React.useState(1);
+        const [tblData, setTblData] = React.useState([])
+        const perPage = 1;
+
+        React.useEffect(() => {
+            const end = perPage * pageNo;
+            const start = end - perPage;
+            const currData = data.slice(start, end)
+            setTblData(currData)
+        }, [pageNo])
+
+        return <div> <table border="2px">
+            <thead>
+                <tr style={{ background: headingColor }}>
+                    {
+                        headings?.map((val, ind) => {
+                            return <th key={`th_${ind}`}>{val}</th>
+                        })
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    tblData?.map((obj, ind, oa) => {
+                        return <tr key={`tr_${ind}`}>
+                            {
+                                keys?.map((val, index) => {
+                                    return <td key={`td_${index}`}>{obj[val]}</td>
+                                })
+                            }
+                        </tr>
+                    })
+                }
+
+            </tbody>
+        </table>
+            <Pagination totalPages={Math.ceil(data.length / perPage)} pageNo={pageNo} setPageNo={setPageNo} />
+        </div>
+    }
+    function App() {
+        return <div>
+            <h3>Players</h3>
+            <Table
+                headings={["Players Name", "Plyaer Runs", "Player Location"]}
+                data={[{ n: "sachin", r: 20000, l: "Mumbai" }, { n: "Dhoni", r: 10000, l: "Ranchi" }]}
+                keys={["n", "r", "l"]}
+                headingColor="red"
+            />
+            <h3>Students</h3>
+            <Table headings={["Name", "Rno"]}
+                data={[{ name: "s1", rno: 1 }, { name: "s2", rno: 2 }, { name: "s3", rno: 3 }]}
+                keys={['name', 'rno']}
+                headingColor="blue"
+            />
+        </div>
+    }
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(<App />)
+</script>

@@ -1,0 +1,71 @@
+<script src="/react.development.js"></script>
+<script src="/babel.min.js"></script>
+<script src="/react-dom.development.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+    function Question({ que, options, type, index }) {
+        return <div key={`div_${index}`}>
+            <h4>{index + 1}. {que}</h4>
+            {
+                options.map(function (val, ind, oa) {
+                    return <p key={`p_${ind}`}><input name={index} type={type === "S" ? "radio" : "checkbox"} />{val}</p>
+                })
+            }
+        </div>
+    }
+    function App() {
+        const htmlQuestions = [
+            {
+                "que": "is html element inline ?",
+                "options": ["No", "Yes"],
+                "type": "S"
+            },
+            {
+                "que": "Below which are inline element ?",
+                "options": ["p", "a", "h1", "span"],
+                "type": "M"
+            },
+            {
+                "que": "How we can provides additional information about the element?",
+                "options": ["script", "link", "meta", "title"],
+                "type": "S"
+            }
+        ]
+        const cssQuestions = [
+            {
+                "que": "How many we can apply CSS ?",
+                "options": [3, 2, 1, 5],
+                "type": "S"
+            },
+            {
+                "que": "Below which components releated Boxmodel?",
+                "options": ["margin", "top", "padding", "border"],
+                "type": "M"
+            },
+            {
+                "que": "fixed position element take view port as reference?",
+                "options": ["Yes", "No"],
+                "type": "S"
+            }
+        ]
+        return <div>
+            <h3>HTML Questions</h3>
+            {
+                htmlQuestions.map(function (obj, index, oa) {
+                    return <Question key={`que_${index}`} {...obj} index={index} />
+                })
+            }
+            <h3>CS Questions</h3>
+            {
+                cssQuestions.map(function (obj, index, oa) {
+                    return <Question key={`que_${index}`} {...obj} index={index} />
+                })
+            }
+            <button>submit</button>
+        </div>
+    }
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(<App />)
+</script>

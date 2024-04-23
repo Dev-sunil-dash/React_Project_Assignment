@@ -1,0 +1,67 @@
+<script src="/react.development.js"></script>
+<script src="/babel.min.js"></script>
+<script src="/react-dom.development.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+    function App() {
+        const data = [
+            {
+                "que": "is html element inline ?",
+                "options": ["No", "Yes"],
+                "type": "S",
+                "ans": "A"
+            },
+            {
+                "que": "Below which are inline element ?",
+                "options": ["p", "a", "h1", "span"],
+                "type": "M",
+                "ans": "BD"
+            },
+            {
+                "que": "How we can provides additional information about the element?",
+                "options": ["script", "link", "meta", "title"],
+                "type": "S",
+                "ans": "D"
+            }
+        ]
+        return <div>
+            <table border="2px">
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Opt1</th>
+                        <th>Opt2</th>
+                        <th>Opt3</th>
+                        <th>Opt4</th>
+                        <th>Type</th>
+                        <th>Answer</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        data.map(function ({ que, options, type, ans }, ind, oa) {
+                            const [a, b, c, d] = options
+                            return <tr key={`tr_${ind}`}>
+                                <td>{que}</td>
+                                <td>{a}</td>
+                                <td>{b}</td>
+                                <td>{c}</td>
+                                <td>{d}</td>
+                                <td>{type}</td>
+                                <td>{ans}</td>
+                                <td><button>Edit</button></td>
+                                <td><button>Delete</button></td>
+                            </tr>
+                        })
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(<App />)
+</script>

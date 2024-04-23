@@ -1,0 +1,78 @@
+<script src="/react.development.js"></script>
+<script src="/babel.min.js"></script>
+<script src="/react-dom.development.js"></script>
+<!-- container -->
+<div id="root"></div>
+
+
+<script type="text/babel">
+    const ctx1 = React.createContext();
+    const ctx2 = React.createContext();
+    const ctx3 = React.createContext();
+
+    const { Provider: Provider1 } = ctx1
+    const { Provider: Provider3 } = ctx3;
+
+
+
+    function A() {
+        const [p1, p2] = React.useContext(ctx3)
+        return <div>
+            <h1>A:{p1}</h1>
+            <C />
+        </div>
+    }
+    function B() {
+        const { n3 } = React.useContext(ctx2)
+        return <div>
+            <h1>B:{n3}</h1>
+        </div>
+    }
+    function C() {
+        const { n2 } = React.useContext(ctx2)
+        return <div>
+            <h1>C:{n2}</h1>
+            <D></D>
+        </div>
+    }
+    function D() {
+        return <div>
+            <h1>D:</h1>
+            <E />
+        </div>
+    }
+    function E() {
+        const ctxData = React.useContext(ctx1)
+        return <div>
+            <h1>E:{ctxData}</h1>
+        </div>
+    }
+    function App() {
+        const ref = React.useRef();
+        const [data, setData] = React.useState()
+        const handleClick = () => {
+            const name = ref.current.value;
+            setData(name)
+        }
+        return <div>
+            <h1>App</h1>
+            <p>Name:<input ref={ref} /></p>
+            <button onClick={handleClick}>submit</button>
+            <Provider1 value={data}>
+                <ctx2.Provider value={{ n1: 10, n2: 20, n3: "Kohli" }}>
+                    <Provider3 value={["sachin", 'Dhoni']}>
+                        <A />
+                        <B />
+                    </Provider3>
+                </ctx2.Provider>
+            </Provider1>
+
+        </div>
+    }
+
+    // get refrece of my container
+    const containerRef = document.getElementById("root")
+    const root = ReactDOM.createRoot(containerRef)
+    //render content inside the container
+    root.render(<App />)
+</script>
