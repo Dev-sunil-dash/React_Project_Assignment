@@ -1,0 +1,41 @@
+<script src="/react.development.js"></script>
+<script src="/babel.min.js"></script>
+<script src="/react-dom.development.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    function Child({ onClick }) {
+
+        React.useEffect(() => {
+            console.log("Created");
+        }, [onClick])
+
+        return <button onClick={onClick}>Click</button>
+    }
+
+    function App() {
+        const [count, setCount] = React.useState(0);
+        const [name, setName] = React.useState("Sachin");
+
+        const handleClick = React.useCallback(() => {
+            setCount(count + 1);
+        }, [count]);
+
+        function handleToggle() {
+            setName(name === "Sachin" ? "Dhoni" : "Sachin");
+        }
+
+
+        // const handleClick = React.useCallback(handleClick(), [count]);
+
+        return <div>
+            <h1>{count}</h1>
+            <Child onClick={handleClick} />
+            <h1>{name}</h1>
+            <button onClick={handleToggle}>Toggle</button>
+        </div>
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
